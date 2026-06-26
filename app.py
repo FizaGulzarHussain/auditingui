@@ -175,27 +175,44 @@ small, .stCaption, [data-testid="stCaptionContainer"] { color: #7A8BA8 !importan
     display: flex !important; align-items: stretch !important;
 }
 .stButton > button, [data-testid="stDownloadButton"] > button {
-    width: 100% !important; min-height: 2.65rem !important;
+    width: 100% !important; min-height: 2.85rem !important;
     display: flex !important; align-items: center !important;
     justify-content: center !important; cursor: pointer !important;
-    border-radius: 9px !important; font-weight: 600 !important;
-    font-size: 0.88rem !important; letter-spacing: 0.015em !important;
-    transition: all 0.17s ease !important;
+    border-radius: 10px !important; font-weight: 700 !important;
+    font-size: 0.92rem !important; letter-spacing: 0.02em !important;
+    transition: all 0.18s ease !important;
+    /* Force text to always be visible — never inherit transparent */
+    color: #1D4ED8 !important;
+}
+/* Ensure inner <p> and <span> inside buttons are also visible */
+.stButton > button p,
+.stButton > button span,
+[data-testid="stDownloadButton"] > button p,
+[data-testid="stDownloadButton"] > button span {
+    color: inherit !important;
 }
 
-/* Primary buttons */
+/* Primary buttons — blue with bright white text */
 .stButton > button[kind="primary"],
 button[data-testid="baseButton-primary"] {
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
+    background: linear-gradient(135deg, #2563EB 0%, #1A45C0 100%) !important;
     color: #FFFFFF !important; border: none !important;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.35), 0 1px 2px rgba(37,99,235,0.2) !important;
-    padding: 0.6rem 1.4rem !important;
+    box-shadow: 0 3px 10px rgba(37,99,235,0.40), 0 1px 3px rgba(37,99,235,0.25) !important;
+    padding: 0.65rem 1.5rem !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15) !important;
+}
+.stButton > button[kind="primary"] p,
+.stButton > button[kind="primary"] span,
+button[data-testid="baseButton-primary"] p,
+button[data-testid="baseButton-primary"] span {
+    color: #FFFFFF !important;
 }
 .stButton > button[kind="primary"]:hover,
 button[data-testid="baseButton-primary"]:hover {
-    background: linear-gradient(135deg, #1D4ED8 0%, #1A45C0 100%) !important;
-    box-shadow: 0 6px 18px rgba(37,99,235,0.38), 0 2px 4px rgba(37,99,235,0.2) !important;
-    transform: translateY(-1px) !important;
+    background: linear-gradient(135deg, #1D4ED8 0%, #1535A8 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 22px rgba(37,99,235,0.45), 0 2px 5px rgba(37,99,235,0.25) !important;
+    transform: translateY(-2px) !important;
 }
 .stButton > button[kind="primary"]:active,
 button[data-testid="baseButton-primary"]:active {
@@ -204,37 +221,91 @@ button[data-testid="baseButton-primary"]:active {
 }
 .stButton > button[kind="primary"]:disabled,
 button[data-testid="baseButton-primary"]:disabled {
-    background: #B8CDEF !important; border: none !important;
+    background: #C5D5F0 !important; border: none !important; color: #7A95C5 !important;
     box-shadow: none !important; cursor: not-allowed !important; opacity: 1 !important;
 }
 
-/* Secondary buttons */
+/* Secondary buttons — clear dark text on white */
 .stButton > button:not([kind="primary"]) {
-    background: #FFFFFF !important; color: #2563EB !important;
-    border: 1.5px solid #BFCEE8 !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
-    padding: 0.6rem 1.2rem !important;
+    background: #FFFFFF !important; color: #1D4ED8 !important;
+    border: 2px solid #93B0E8 !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
+    padding: 0.65rem 1.2rem !important;
+}
+.stButton > button:not([kind="primary"]) p,
+.stButton > button:not([kind="primary"]) span {
+    color: #1D4ED8 !important;
 }
 .stButton > button:not([kind="primary"]):hover {
     border-color: #2563EB !important; background: #EFF6FF !important;
-    box-shadow: 0 3px 10px rgba(37,99,235,0.12) !important;
-    transform: translateY(-1px) !important;
+    color: #1535A8 !important;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.18) !important;
+    transform: translateY(-2px) !important;
+}
+.stButton > button:not([kind="primary"]):hover p,
+.stButton > button:not([kind="primary"]):hover span {
+    color: #1535A8 !important;
 }
 .stButton > button:not([kind="primary"]):disabled {
     color: #A0B0C8 !important; border-color: #DDE4F0 !important;
     background: #F8FAFC !important; box-shadow: none !important;
 }
 
-/* Download buttons */
+/* Download buttons — always bold white on blue */
 [data-testid="stDownloadButton"] > button {
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
-    color: #FFFFFF !important; border: none !important;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.35) !important;
+    background: linear-gradient(135deg, #2563EB 0%, #1A45C0 100%) !important;
+    color: #FFFFFF !important; border: none !important; font-weight: 700 !important;
+    box-shadow: 0 3px 10px rgba(37,99,235,0.40) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15) !important;
+}
+[data-testid="stDownloadButton"] > button p,
+[data-testid="stDownloadButton"] > button span {
+    color: #FFFFFF !important;
 }
 [data-testid="stDownloadButton"] > button:hover {
-    background: linear-gradient(135deg, #1D4ED8 0%, #1A45C0 100%) !important;
-    box-shadow: 0 6px 18px rgba(37,99,235,0.38) !important;
-    transform: translateY(-1px) !important;
+    background: linear-gradient(135deg, #1D4ED8 0%, #1535A8 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 22px rgba(37,99,235,0.45) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ── Streamlit native tooltip / help icon ─────────────── */
+[data-testid="stTooltipIcon"] { color: #2563EB !important; opacity: 1 !important; }
+
+/* Tooltip popup container — every selector Streamlit uses */
+div[role="tooltip"],
+[data-testid="stTooltipContent"],
+[data-testid="stTooltipPopover"],
+.stTooltipContent,
+[data-radix-popper-content-wrapper] > div,
+[data-radix-tooltip-content] {
+    background: #0D1526 !important;
+    color: #F0F4FF !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+    max-width: 300px !important;
+    line-height: 1.6 !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* Force ALL children inside any tooltip to use bright text —
+   overrides the global p/span/label rules that bleed in */
+div[role="tooltip"] *,
+[data-testid="stTooltipContent"] *,
+[data-testid="stTooltipPopover"] *,
+[data-radix-popper-content-wrapper] > div *,
+[data-radix-tooltip-content] * {
+    color: #F0F4FF !important;
+    background: transparent !important;
+}
+
+/* Arrow */
+div[role="tooltip"]::before,
+[data-testid="stTooltipContent"]::before {
+    border-bottom-color: #0D1526 !important;
 }
 
 /* ── Layout helpers ───────────────────────────────────── */
@@ -418,23 +489,44 @@ hr { border: none !important; border-top: 1px solid #E0E8F4 !important; margin: 
     color: white !important;
     border: 1px solid rgba(255,255,255,0.2) !important;
 }
-[data-testid="stSidebar"] * { color: rgba(255,255,255,0.85) !important; }
+[data-testid="stSidebar"] * { color: rgba(255,255,255,0.88) !important; }
+/* But buttons inside sidebar must keep their own explicit colors */
+[data-testid="stSidebar"] .stButton > button,
+[data-testid="stSidebar"] .stButton > button p,
+[data-testid="stSidebar"] .stButton > button span,
+[data-testid="stSidebar"] .stButton > button div {
+    color: #FFFFFF !important;
+}
 [data-testid="stSidebar"] .stButton > button {
-    background: transparent !important;
-    color: rgba(255,255,255,0.75) !important;
-    border: none !important; box-shadow: none !important;
-    border-radius: 8px !important; font-weight: 500 !important;
+    background: rgba(255,255,255,0.07) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    box-shadow: none !important;
+    border-radius: 8px !important; font-weight: 600 !important;
     font-size: 0.9rem !important; text-align: left !important;
-    justify-content: flex-start !important; padding: 0.55rem 0.9rem !important;
+    justify-content: flex-start !important; padding: 0.6rem 0.9rem !important;
     width: 100% !important; transition: all 0.15s ease !important;
 }
+[data-testid="stSidebar"] .stButton > button p,
+[data-testid="stSidebar"] .stButton > button span {
+    color: #FFFFFF !important;
+}
 [data-testid="stSidebar"] .stButton > button:hover {
-    background: rgba(255,255,255,0.1) !important;
-    color: #fff !important; transform: none !important;
+    background: rgba(255,255,255,0.16) !important;
+    color: #FFFFFF !important;
+    border-color: rgba(255,255,255,0.28) !important;
+    transform: none !important;
 }
 [data-testid="stSidebar"] .stButton > button[kind="primary"] {
-    background: rgba(37,99,235,0.85) !important;
-    color: #fff !important; box-shadow: none !important;
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.5) !important;
+    font-weight: 700 !important;
+}
+[data-testid="stSidebar"] .stButton > button[kind="primary"]:hover {
+    background: #1D4ED8 !important;
+    color: #FFFFFF !important;
 }
 [data-testid="stSidebar"] hr {
     border-color: rgba(255,255,255,0.1) !important;
@@ -1143,14 +1235,55 @@ if is_direct_mode:
             st.session_state.pop("results", None)
             st.session_state.get("contacts", {}).pop(raw, None)
 
-            # One click does it all: tech detect → audit + CDN → contacts.
-            # A single progress UI keeps it feeling like one fast action
-            # instead of several separate steps the rep has to trigger.
-            _prog_status = st.empty()
-            _prog_status.info(f"🧪 {_t('Detecting tech stack…', 'Tech-Stack wird ermittelt…')}")
+            # One click does it all: tech detect -> audit + CDN -> contacts.
+            # The live tracker updates after each step so users see progress.
+            def _live_tracker(s1=False, s2=False, s3=False, s4=False, active_step=0):
+                step_defs_live = [
+                    (_t("Website submitted",   "Website eingereicht"),    s1),
+                    (_t("Technology scanned",  "Technologie erkannt"),     s2),
+                    (_t("Speed checked",       "Geschwindigkeit geprueft"), s3),
+                    (_t("Contact info found",  "Kontaktdaten gefunden"),   s4),
+                ]
+                html = ""
+                for i, (label, done) in enumerate(step_defs_live, start=1):
+                    is_active = (active_step == i)
+                    if done:
+                        cc = "#16A34A"; tc = "#1E2D4A"; ic = "&#10003;"
+                    elif is_active:
+                        cc = "#2563EB"; tc = "#2563EB"; ic = "&#8943;"
+                    else:
+                        cc = "#CBD5E1"; tc = "#9AA5BC"; ic = str(i)
+                    pulse = "animation:tracker-pulse 1s ease-in-out infinite;" if is_active else ""
+                    html += (
+                        f'<div style="display:flex;align-items:center;gap:6px;">'
+                        f'<div style="width:22px;height:22px;border-radius:50%;background:{cc};'
+                        f'color:#fff;font-size:{"13" if done else "11"}px;font-weight:700;'
+                        f'display:flex;align-items:center;justify-content:center;flex-shrink:0;{pulse}">'
+                        f'{ic}</div>'
+                        f'<span style="font-size:11.5px;font-weight:{"700" if done or is_active else "600"};'
+                        f'color:{tc};">{_t("Step","Schritt")} {i}: {label}</span></div>'
+                    )
+                    if i < len(step_defs_live):
+                        lc = "#16A34A" if done else "#E2E8F0"
+                        html += f'<div style="flex:1;height:2px;background:{lc};min-width:14px;"></div>'
+                return (
+                    '<style>@keyframes tracker-pulse{0%,100%{opacity:1}50%{opacity:0.4}}</style>'
+                    '<div style="display:flex;align-items:center;gap:8px;background:#FFFFFF;'
+                    'border:1px solid #E0E8F4;border-radius:10px;padding:12px 16px;margin-bottom:12px;">'
+                    + html + '</div>'
+                )
+
+            _live_ph  = st.empty()
+            _live_msg = st.empty()
+
+            # Step 1 done, step 2 active
+            _live_ph.markdown(_live_tracker(s1=True, active_step=2), unsafe_allow_html=True)
+            _live_msg.info(f"\U0001f9ea {_t('Detecting tech stack...', 'Tech-Stack wird ermittelt...')}")
             st.session_state["direct_tech"] = {raw: detect_tech(raw)}
 
-            _prog_status.info(f"🚀 {_t('Auditing site speed & performance…', 'Geschwindigkeit & Performance werden geprüft…')}")
+            # Step 2 done, step 3 active
+            _live_ph.markdown(_live_tracker(s1=True, s2=True, active_step=3), unsafe_allow_html=True)
+            _live_msg.info(f"\U0001f680 {_t('Auditing site speed & performance...', 'Geschwindigkeit & Performance werden geprueft...')}")
             result = audit_website(raw)
             cdn_map = st.session_state.get("cdn_map", {})
             cdn_map[raw] = detect_cdn(raw)
@@ -1158,11 +1291,18 @@ if is_direct_mode:
             st.session_state["audits"] = {raw: result}
 
             if CONTACT_AVAILABLE:
-                _prog_status.info(f"📧 {_t('Extracting contact info…', 'Kontaktdaten werden extrahiert…')}")
+                # Step 3 done, step 4 active
+                _live_ph.markdown(_live_tracker(s1=True, s2=True, s3=True, active_step=4), unsafe_allow_html=True)
+                _live_msg.info(f"\U0001f4e7 {_t('Extracting contact info...', 'Kontaktdaten werden extrahiert...')}")
                 st.session_state.setdefault("contacts", {})[raw] = extract_contact_info(raw)
                 st.session_state["_contact_auto_extracted"] = raw
 
-            _prog_status.empty()
+            # All 4 steps complete
+            _live_ph.markdown(_live_tracker(s1=True, s2=True, s3=True, s4=True), unsafe_allow_html=True)
+            _live_msg.success(f"\u2705 {_t('All done! Scroll down to see results.', 'Fertig! Scrollen Sie nach unten.')}")
+            time.sleep(0.8)
+            _live_ph.empty()
+            _live_msg.empty()
             st.rerun()
 
     ready_url = st.session_state.get("direct_url_ready", "")
@@ -1174,33 +1314,46 @@ if is_direct_mode:
         _step3_done = ready_url in st.session_state.get("audits", {})
         _step4_done = ready_url in st.session_state.get("contacts", {})
 
-        # ── Step progress tracker — confirms everything ran, all from one click ──
-        _steps = [
-            (_t("Website submitted", "Website eingereicht"), True),
-            (_t("Technology scanned", "Technologie erkannt"), already_detected),
-            (_t("Speed checked", "Geschwindigkeit geprüft"), _step3_done),
-            (_t("Contact info found", "Kontaktdaten gefunden"), _step4_done),
-        ]
-        _step_html = ""
-        for i, (label, done) in enumerate(_steps, start=1):
-            _circle_col = "#16A34A" if done else "#CBD5E1"
-            _text_col   = "#1E2D4A" if done else "#9AA5BC"
-            _icon       = "✓" if done else str(i)
-            _step_html += (
-                f'<div style="display:flex;align-items:center;gap:6px;">'
-                f'<div style="width:20px;height:20px;border-radius:50%;background:{_circle_col};'
-                f'color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;'
-                f'justify-content:center;flex-shrink:0;">{_icon}</div>'
-                f'<span style="font-size:11.5px;font-weight:600;color:{_text_col};">'
-                f'{_t("Step", "Schritt")} {i}: {label}</span></div>'
+        # ── Step progress tracker — live, updates after each step ────────────
+        def _render_tracker(s1=False, s2=False, s3=False, s4=False, active_step=0):
+            step_defs = [
+                (_t("Website submitted",   "Website eingereicht"),    s1),
+                (_t("Technology scanned",  "Technologie erkannt"),     s2),
+                (_t("Speed checked",       "Geschwindigkeit geprüft"), s3),
+                (_t("Contact info found",  "Kontaktdaten gefunden"),   s4),
+            ]
+            html = ""
+            for i, (label, done) in enumerate(step_defs, start=1):
+                is_active = (active_step == i)
+                if done:
+                    circle_col = "#16A34A"; text_col = "#1E2D4A"; icon = "✓"
+                elif is_active:
+                    circle_col = "#2563EB"; text_col = "#2563EB"; icon = "⋯"
+                else:
+                    circle_col = "#CBD5E1"; text_col = "#9AA5BC"; icon = str(i)
+                pulse = "animation:tracker-pulse 1s ease-in-out infinite;" if is_active else ""
+                html += (
+                    f'<div style="display:flex;align-items:center;gap:6px;">'
+                    f'<div style="width:22px;height:22px;border-radius:50%;background:{circle_col};'
+                    f'color:#fff;font-size:{"13" if done else "11"}px;font-weight:700;'
+                    f'display:flex;align-items:center;justify-content:center;flex-shrink:0;{pulse}">'
+                    f'{icon}</div>'
+                    f'<span style="font-size:11.5px;font-weight:{"700" if done or is_active else "600"};'
+                    f'color:{text_col};">{_t("Step","Schritt")} {i}: {label}</span></div>'
+                )
+                if i < len(step_defs):
+                    line_col = "#16A34A" if done else "#E2E8F0"
+                    html += f'<div style="flex:1;height:2px;background:{line_col};min-width:14px;"></div>'
+            return (
+                '<style>@keyframes tracker-pulse{0%,100%{opacity:1}50%{opacity:0.4}}</style>'
+                '<div style="display:flex;align-items:center;gap:8px;background:#FFFFFF;'
+                'border:1px solid #E0E8F4;border-radius:10px;padding:12px 16px;margin-bottom:12px;">'
+                + html + '</div>'
             )
-            if i < len(_steps):
-                _line_col = "#16A34A" if done else "#E2E8F0"
-                _step_html += f'<div style="flex:1;height:2px;background:{_line_col};min-width:14px;"></div>'
-        st.markdown(
-            f'<div style="display:flex;align-items:center;gap:8px;background:#FFFFFF;'
-            f'border:1px solid #E0E8F4;border-radius:10px;padding:10px 14px;margin-bottom:12px;">'
-            f'{_step_html}</div>',
+
+        _tracker_ph = st.empty()
+        _tracker_ph.markdown(
+            _render_tracker(s1=True, s2=already_detected, s3=_step3_done, s4=_step4_done),
             unsafe_allow_html=True,
         )
 
@@ -1223,7 +1376,15 @@ if is_direct_mode:
 else:
     st.markdown(f"""
 <div class="search-card">
-  <p style="margin-bottom:0.75rem;font-weight:600;">{_t('Find businesses in any city or country, then check their websites for opportunities.','Unternehmen in jeder Stadt oder jedem Land finden und deren Websites auf Chancen prüfen.')}</p>
+  <div style="font-size:1.05rem;font-weight:700;color:#0D1526;margin-bottom:0.4rem;">
+    🔍 {_t('Step 1 — Find Businesses', 'Schritt 1 — Unternehmen finden')}
+  </div>
+  <p style="margin-bottom:0;color:#4A5C78;font-size:0.92rem;">
+    {_t(
+      'Enter a type of business and a city below, then click <b>Find Businesses</b>. We will search the web and list their websites for you.',
+      'Geben Sie unten eine Unternehmensart und eine Stadt ein, und klicken Sie auf <b>Unternehmen finden</b>. Wir durchsuchen das Web und listen deren Websites auf.'
+    )}
+  </p>
 </div>""", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([2, 2, 1])
     with col1:
@@ -1317,8 +1478,8 @@ if "results" in st.session_state and st.session_state["results"]:
       <div style="font-size:0.78rem;color:#7A8BA8;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">{_t('Businesses found', 'Unternehmen gefunden')}</div>
     </div>
   </div>
-  <div style="font-size:0.82rem;color:#7A8BA8;">
-    {_t('Tick the ones you want to check, then run the audit below.', 'Wählen Sie die gewünschten aus und starten Sie die Prüfung.')}
+      <div style="font-size:0.84rem;color:#4A5C78;font-weight:500;">
+    {_t('✅ Step 2 — Tick the boxes next to the websites you want to check, then scroll down and click the blue button.', '✅ Schritt 2 — Setzen Sie Häkchen neben den Websites und klicken Sie unten auf die blaue Schaltfläche.')}
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -1559,7 +1720,7 @@ div[class*="st-key-{_card_key}"] [data-testid="stCheckbox"] {{
     st.markdown(f"""
 <div class="section-divider">
   <div class="section-divider-line"></div>
-  <div class="section-divider-label">🚀 {_t('Run Checks', 'Prüfungen starten')}</div>
+  <div class="section-divider-label">🚀 {_t('Step 3 — Run Speed Checks', 'Schritt 3 — Geschwindigkeit prüfen')}</div>
   <div class="section-divider-line"></div>
 </div>
 """, unsafe_allow_html=True)
