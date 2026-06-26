@@ -1634,7 +1634,7 @@ div[class*="st-key-{_card_key}"] [data-testid="stCheckbox"] {{
 """, unsafe_allow_html=True)
 
         with st.container(key=_card_key):
-            # ── Top row: checkbox | name+badges (flex) | Check button ──────────
+            # Top row: checkbox | name+badges+url+tech | ONE button (no stacking)
             hdr_chk, hdr_info, hdr_btn = st.columns([0.55, 6.5, 1.8])
 
             with hdr_chk:
@@ -1652,6 +1652,7 @@ div[class*="st-key-{_card_key}"] [data-testid="stCheckbox"] {{
                     st.session_state["_select_action"] = None
 
             with hdr_info:
+                # Name + badges + url + tech all in the info column — no orphan rows
                 st.markdown(
                     f'<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;min-height:28px;">'
                     f'<span style="font-size:0.95rem;font-weight:700;color:#0D1526;">{name}</span>'
@@ -1659,16 +1660,27 @@ div[class*="st-key-{_card_key}"] [data-testid="stCheckbox"] {{
                     f'</div>',
                     unsafe_allow_html=True,
                 )
+                st.markdown(
+                    f'<div style="margin:2px 0 5px 0;font-size:0.8rem;">'
+                    f'<a href="{url}" target="_blank" style="color:#2563EB;text-decoration:none;">'
+                    f'{_domain_display}</a></div>',
+                    unsafe_allow_html=True,
+                )
+                if _tech_pills:
+                    st.markdown(
+                        f'<div style="margin-bottom:4px;line-height:2;">{_tech_pills}</div>',
+                        unsafe_allow_html=True,
+                    )
+                if _opp_badge:
+                    st.markdown(
+                        f'<div style="line-height:2;">{_opp_badge}</div>',
+                        unsafe_allow_html=True,
+                    )
 
             with hdr_btn:
                 if AUDIT_AVAILABLE:
                     if already_audited:
-                        st.button(
-                            f"✓ {_t('Checked', 'Geprüft')}",
-                            key=f"audit_{idx}",
-                            use_container_width=True,
-                            disabled=True,
-                        )
+                        # Single Re-check — the badge already shows checked status
                         if st.button(
                             f"↺ {_t('Re-check', 'Erneut')}",
                             key=f"reaudit_{idx}",
@@ -1684,6 +1696,7 @@ div[class*="st-key-{_card_key}"] [data-testid="stCheckbox"] {{
                             f"🚀 {_t('Check', 'Prüfen')}",
                             key=f"audit_{idx}",
                             use_container_width=True,
+                            type="primary",
                         ):
                             if url not in st.session_state.get("audits", {}):
                                 with st.spinner(f"{_t('Checking', 'Prüfe')} {url}…"):
@@ -1693,28 +1706,6 @@ div[class*="st-key-{_card_key}"] [data-testid="stCheckbox"] {{
                                     with st.spinner(_t("Auto-extracting contact info…", "Kontaktdaten werden automatisch extrahiert…")):
                                         st.session_state.setdefault("contacts", {})[url] = extract_contact_info(url)
                             st.rerun()
-
-            # ── URL row (indented ~26px to clear checkbox column) ────────────
-            st.markdown(
-                f'<div style="margin:3px 0 7px 0;font-size:0.8rem;">'
-                f'<a href="{url}" target="_blank" style="color:#2563EB;text-decoration:none;">'
-                f'{_domain_display}</a></div>',
-                unsafe_allow_html=True,
-            )
-
-            # ── Tech stack pills ─────────────────────────────────────────────
-            if _tech_pills:
-                st.markdown(
-                    f'<div style="margin-bottom:6px;line-height:2;">{_tech_pills}</div>',
-                    unsafe_allow_html=True,
-                )
-
-            # ── Opportunity badge row (if audited) ───────────────────────────
-            if _opp_badge:
-                st.markdown(
-                    f'<div style="margin-top:4px;line-height:2;">{_opp_badge}</div>',
-                    unsafe_allow_html=True,
-                )
 
     # ── Bulk Audit ────────────────────────────────────────────────────────────
     st.markdown(f"""
